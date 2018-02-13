@@ -27,7 +27,6 @@ df['IDC'] = df.CHROM.astype(str) + ':' + df.POS.astype(str) + '-' + df.REF.astyp
 
 # STEP2: read clinvar singles text file downloaded from https://github.com/macarthur-lab/clinvar/blob/master/output/b37/single/clinvar_alleles.single.b37.tsv.gz
 clinvar_si = os.path.join('..', 'output', 'b37', 'single', 'clinvar_alleles.single.b37.tsv.gz')
-#clinvar_si = r'C:\Users\rameshtn\workspace\calpath\calpath\db\clinvar_alleles.single.b37.tsv.gz'
 df_c = pd.read_csv(clinvar_si, sep='\t', comment = '#', chunksize=1000, \
                 low_memory=False, iterator = True, compression='gzip')
 df_c = pd.concat(list(df_c), ignore_index=True)
